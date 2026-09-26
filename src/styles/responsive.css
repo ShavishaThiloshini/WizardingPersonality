@@ -1,1 +1,52 @@
-/* Responsive styles will be defined here later */
+/* Responsive Foundation */
+
+/* Default (Mobile First): 320px+ */
+:root {
+  --font-size-title: 2rem;
+  --font-size-heading: 1.5rem;
+  --font-size-subtitle: 1.25rem;
+  
+  --spacing-lg: 1rem;
+  --spacing-xl: 1.25rem;
+}
+
+.parchment-card {
+  padding: var(--spacing-lg);
+  margin: var(--spacing-sm);
+  width: calc(100% - var(--spacing-lg));
+}
+
+/* Tablet: 768px+ */
+@media screen and (min-width: 768px) {
+  :root {
+    --font-size-title: 2.5rem;
+    --font-size-heading: 1.75rem;
+    --font-size-subtitle: 1.35rem;
+    
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+  }
+  
+  .parchment-card {
+    padding: var(--spacing-xl);
+    width: auto;
+  }
+}
+
+/* Desktop: 1024px+ */
+@media screen and (min-width: 1024px) {
+  :root {
+    --font-size-title: 3rem;
+    --font-size-heading: 2rem;
+    --font-size-subtitle: 1.5rem;
+  }
+}
+
+/* Large desktop: 1440px+ */
+@media screen and (min-width: 1440px) {
+  :root {
+    --font-size-title: 3.5rem;
+    --font-size-heading: 2.5rem;
+    --font-size-subtitle: 1.75rem;
+  }
+}

@@ -1,3 +1,67 @@
-/* Variables will be defined here later */
+/* Variables for Wizarding Personality UI Foundation */
 :root {
+  /* Colors */
+  --color-burgundy: #641E1E;
+  --color-gold: #C39A1C;
+  --color-dark-brown: #3D2F22;
+  --color-grey: #717679;
+  --color-parchment: #EFEEE9;
+  
+  --color-background: #171313;
+  --color-light-gold: #E0C45C;
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  
+  --color-text-primary: var(--color-parchment);
+  --color-text-dark: var(--color-dark-brown);
+  --color-text-muted: var(--color-grey);
+  
+  --color-border: var(--color-gold);
+  
+  --color-btn-primary-bg: var(--color-burgundy);
+  --color-btn-primary-text: var(--color-parchment);
+  --color-btn-primary-hover: #7b2626;
+  
+  --color-btn-secondary-bg: transparent;
+  --color-btn-secondary-text: var(--color-gold);
+  --color-btn-secondary-hover: rgba(195, 154, 28, 0.1);
+
+  --color-card-bg: var(--color-parchment);
+  
+  /* Typography */
+  --font-family-display: 'Cinzel', 'Playfair Display', serif; /* Fallbacks for magical feeling */
+  --font-family-body: 'Inter', 'Roboto', sans-serif;
+  
+  --font-size-title: 3rem;
+  --font-size-heading: 2rem;
+  --font-size-subtitle: 1.5rem;
+  --font-size-body: 1rem;
+  --font-size-small: 0.875rem;
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  
+  /* Borders */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  
+  /* Shadows */
+  --shadow-subtle: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --shadow-glow: 0 0 15px rgba(195, 154, 28, 0.2);
+  --shadow-card: 0 8px 15px rgba(0, 0, 0, 0.5);
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease-in-out;
+  --transition-normal: 0.3s ease-in-out;
+  --transition-slow: 0.5s ease-in-out;
+  
+  /* Layout */
+  --container-max-width: 1200px;
+  --content-max-width: 800px;
 }

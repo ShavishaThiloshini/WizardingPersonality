@@ -14,7 +14,7 @@ function App() {
   };
 
   return (
-    <div className="app-container">
+    <div className="app-container magical-background">
       {currentScreen === "loading" && (
         <LoadingScreen onComplete={handleLoadingComplete} />
       )}
@@ -24,9 +24,11 @@ function App() {
       )}
       
       {currentScreen === "quiz-selection" && (
-        <div className="quiz-selection-screen">
-          <h1>Quiz Selection</h1>
-          <p>This section will be developed in a later phase.</p>
+        <div className="page-container center-content animate-fade-in">
+          <div className="parchment-card stack center-content">
+            <h1 className="text-heading">Quiz Selection</h1>
+            <p className="text-body text-muted">This section will be developed in a later phase.</p>
+          </div>
         </div>
       )}
     </div>
