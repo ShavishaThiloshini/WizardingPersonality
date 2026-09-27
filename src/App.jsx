@@ -5,6 +5,7 @@ import QuizSelection from './components/QuizSelection';
 import QuizIntro from './components/QuizIntro';
 import QuestionCard from './components/QuestionCard';
 import BackgroundMusic from './components/BackgroundMusic';
+import MagicalParticles from './components/MagicalParticles';
 import { houseQuestions } from './data/houseQuestions';
 import characterQuestions from './data/characterQuestions';
 
@@ -115,10 +116,24 @@ function App() {
       )}
 
       {currentScreen === "quiz-complete" && (
-        <div className="page-container center-content animate-fade-in">
-          <div className="parchment-card center-content stack">
-            <h1 className="text-heading">Your magical profile is being prepared...</h1>
-            <p className="text-body text-muted">Results Coming Soon</p>
+        <div className="page-container center-content animate-fade-in" style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden' }}>
+          <MagicalParticles />
+          <div className="parchment-card center-content stack animate-slide-up" style={{ maxWidth: '520px', width: '100%', position: 'relative', zIndex: 2, textAlign: 'center' }}>
+            <p style={{ fontSize: '2.5rem', margin: '0 0 1rem', lineHeight: 1 }} aria-hidden="true">✨</p>
+            <h1 className="text-heading" style={{ marginBottom: '0.75rem' }}>
+              Your magical profile is being prepared...
+            </h1>
+            <p className="text-body text-muted" style={{ marginBottom: '2rem', lineHeight: '1.6' }}>
+              The magic is analyzing your answers.
+            </p>
+            <div style={{ display: 'flex', gap: '10px', justifyContent: 'center' }} aria-hidden="true">
+              <span className="loading-dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--color-gold)', opacity: 0.4, animation: 'dotPulse 1.5s ease-in-out 0.0s infinite' }} />
+              <span className="loading-dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--color-gold)', opacity: 0.4, animation: 'dotPulse 1.5s ease-in-out 0.3s infinite' }} />
+              <span className="loading-dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--color-gold)', opacity: 0.4, animation: 'dotPulse 1.5s ease-in-out 0.6s infinite' }} />
+            </div>
+            <p className="text-small" style={{ marginTop: '2rem', opacity: 0.5 }}>
+              Results coming in Phase 06
+            </p>
           </div>
         </div>
       )}
