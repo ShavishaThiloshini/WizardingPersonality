@@ -42,12 +42,38 @@
   animation: fadeIn var(--transition-slow) forwards;
 }
 
+.animate-fade-out {
+  animation: fadeOut var(--transition-normal) forwards;
+}
+
 .animate-slide-up {
   animation: slideUp var(--transition-slow) forwards;
 }
 
 .animate-float {
   animation: subtleFloat 3s ease-in-out infinite;
+}
+
+/* Magical Spinner & Particles */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes particleFloat {
+  0% { transform: translateY(0) scale(1); opacity: 0.2; }
+  50% { opacity: 0.8; }
+  100% { transform: translateY(-20px) scale(1.2); opacity: 0; }
+}
+
+.magical-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(195, 154, 28, 0.2);
+  border-top-color: var(--color-light-gold);
+  border-radius: 50%;
+  animation: spin 1.5s linear infinite;
+  box-shadow: 0 0 10px rgba(195, 154, 28, 0.4);
 }
 
 /* Accessibility: Reduced Motion */
