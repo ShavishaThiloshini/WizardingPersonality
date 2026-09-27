@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
 import LoadingScreen from './components/LoadingScreen';
 import WelcomeScreen from './components/WelcomeScreen';
+import QuizSelection from './components/QuizSelection';
+import QuizIntro from './components/QuizIntro';
+import QuestionCard from './components/QuestionCard';
+import { houseQuestions } from './data/houseQuestions';
 
 function App() {
   const [currentScreen, setCurrentScreen] = useState("loading");
+  const [selectedQuiz, setSelectedQuiz] = useState(null);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [answers, setAnswers] = useState([]);
 
   const handleLoadingComplete = () => {
     setCurrentScreen("welcome");
@@ -12,6 +19,46 @@ function App() {
   const handleStartJourney = () => {
     setCurrentScreen("quiz-selection");
   };
+
+  const handleSelectHouseQuiz = () => {
+    setSelectedQuiz("house");
+    setCurrentScreen("quiz-intro");
+  };
+
+  const handleBeginQuiz = () => {
+    setCurrentQuestion(0);
+    setAnswers([]);
+    setCurrentScreen("quiz");
+  };
+
+  const handleSelectAnswer = (answerId) => {
+    const questionId = houseQuestions[currentQuestion].id;
+    setAnswers(prev => {
+      const existing = prev.find(a => a.questionId === questionId);
+      if (existing) {
+        return prev.map(a => a.questionId === questionId ? { ...a, answerId } : a);
+      }
+      return [...prev, { questionId, answerId }];
+    });
+  };
+
+  const handleNext = () => {
+    if (currentQuestion < houseQuestions.length - 1) {
+      setCurrentQuestion(prev => prev + 1);
+    } else {
+      setCurrentScreen("quiz-complete");
+    }
+  };
+
+  const handleBack = () => {
+    if (currentQuestion > 0) {
+      setCurrentQuestion(prev => prev - 1);
+    }
+  };
+
+  // Get currently selected answer for the current question
+  const currentQuestionData = houseQuestions[currentQuestion];
+  const currentAnswer = answers.find(a => a.questionId === currentQuestionData?.id)?.answerId || null;
 
   return (
     <div className="app-container magical-background">
@@ -24,10 +71,30 @@ function App() {
       )}
       
       {currentScreen === "quiz-selection" && (
+        <QuizSelection onSelectHouseQuiz={handleSelectHouseQuiz} />
+      )}
+
+      {currentScreen === "quiz-intro" && (
+        <QuizIntro onBeginQuiz={handleBeginQuiz} />
+      )}
+
+      {currentScreen === "quiz" && (
+        <QuestionCard 
+          question={currentQuestionData}
+          questionIndex={currentQuestion}
+          totalQuestions={houseQuestions.length}
+          selectedAnswerId={currentAnswer}
+          onSelectAnswer={handleSelectAnswer}
+          onNext={handleNext}
+          onBack={handleBack}
+        />
+      )}
+
+      {currentScreen === "quiz-complete" && (
         <div className="page-container center-content animate-fade-in">
-          <div className="parchment-card stack center-content">
-            <h1 className="text-heading">Quiz Selection</h1>
-            <p className="text-body text-muted">This section will be developed in a later phase.</p>
+          <div className="parchment-card center-content stack">
+            <h1 className="text-heading">Your magical profile is being prepared...</h1>
+            <p className="text-body text-muted">Results Coming Soon</p>
           </div>
         </div>
       )}
