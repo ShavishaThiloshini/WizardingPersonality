@@ -2,8 +2,8 @@ import React from 'react';
 
 function AnswerOption({ answer, isSelected, onSelect }) {
   const baseStyle = {
-    padding: '1rem',
-    margin: '0.5rem 0',
+    padding: '0.875rem 1rem',
+    margin: '0',
     border: '1px solid',
     borderColor: isSelected ? 'var(--color-gold)' : 'var(--color-border)',
     borderRadius: 'var(--border-radius-sm)',

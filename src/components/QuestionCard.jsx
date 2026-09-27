@@ -17,7 +17,7 @@ function QuestionCard({
 
   return (
     <div className="page-container center-content animate-fade-in" style={{ padding: '1rem' }}>
-      <div className="parchment-card stack" style={{ maxWidth: '650px', width: '100%', padding: '2rem' }}>
+      <div className="parchment-card stack" style={{ maxWidth: '850px', width: '100%', padding: '2rem' }}>
         
         <ProgressBar current={questionIndex + 1} total={totalQuestions} />
         
@@ -25,7 +25,7 @@ function QuestionCard({
           {question.question}
         </h2>
         
-        <div className="answers-container stack" style={{ gap: '0.5rem', marginBottom: '2rem' }}>
+        <div className="answers-container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '1rem', marginBottom: '2rem' }}>
           {question.answers.map((ans) => (
             <AnswerOption 
               key={ans.id}
