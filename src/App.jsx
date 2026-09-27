@@ -6,6 +6,7 @@ import QuizIntro from './components/QuizIntro';
 import QuestionCard from './components/QuestionCard';
 import BackgroundMusic from './components/BackgroundMusic';
 import { houseQuestions } from './data/houseQuestions';
+import characterQuestions from './data/characterQuestions';
 
 function App() {
   const [currentScreen, setCurrentScreen] = useState("loading");
@@ -14,14 +15,17 @@ function App() {
   const [answers, setAnswers] = useState([]);
   const musicRef = useRef(null);
 
+  // Dynamically resolve the active question set
+  const questions =
+    selectedQuiz === "character" ? characterQuestions : houseQuestions;
+
+  // ─── Navigation handlers ──────────────────────────────
   const handleLoadingComplete = () => {
     setCurrentScreen("welcome");
   };
 
   const handleStartJourney = () => {
-    if (musicRef.current) {
-      musicRef.current.startMusic();
-    }
+    if (musicRef.current) musicRef.current.startMusic();
     setCurrentScreen("quiz-selection");
   };
 
@@ -41,19 +45,22 @@ function App() {
     setCurrentScreen("quiz");
   };
 
+  // ─── Answer handling ──────────────────────────────────
   const handleSelectAnswer = (answerId) => {
-    const questionId = houseQuestions[currentQuestion].id;
+    const questionId = questions[currentQuestion].id;
     setAnswers(prev => {
       const existing = prev.find(a => a.questionId === questionId);
       if (existing) {
-        return prev.map(a => a.questionId === questionId ? { ...a, answerId } : a);
+        return prev.map(a =>
+          a.questionId === questionId ? { ...a, answerId } : a
+        );
       }
       return [...prev, { questionId, answerId }];
     });
   };
 
   const handleNext = () => {
-    if (currentQuestion < houseQuestions.length - 1) {
+    if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(prev => prev + 1);
     } else {
       setCurrentScreen("quiz-complete");
@@ -66,22 +73,24 @@ function App() {
     }
   };
 
-  // Get currently selected answer for the current question
-  const currentQuestionData = houseQuestions[currentQuestion];
-  const currentAnswer = answers.find(a => a.questionId === currentQuestionData?.id)?.answerId || null;
+  // ─── Current question data ────────────────────────────
+  const currentQuestionData = questions[currentQuestion];
+  const currentAnswer =
+    answers.find(a => a.questionId === currentQuestionData?.id)?.answerId || null;
 
+  // ─── Render ───────────────────────────────────────────
   return (
     <div className="app-container magical-background">
       <BackgroundMusic ref={musicRef} />
-      
+
       {currentScreen === "loading" && (
         <LoadingScreen onComplete={handleLoadingComplete} />
       )}
-      
+
       {currentScreen === "welcome" && (
         <WelcomeScreen onStart={handleStartJourney} />
       )}
-      
+
       {currentScreen === "quiz-selection" && (
         <QuizSelection
           onSelectHouseQuiz={handleSelectHouseQuiz}
@@ -94,10 +103,10 @@ function App() {
       )}
 
       {currentScreen === "quiz" && (
-        <QuestionCard 
+        <QuestionCard
           question={currentQuestionData}
           questionIndex={currentQuestion}
-          totalQuestions={houseQuestions.length}
+          totalQuestions={questions.length}
           selectedAnswerId={currentAnswer}
           onSelectAnswer={handleSelectAnswer}
           onNext={handleNext}
