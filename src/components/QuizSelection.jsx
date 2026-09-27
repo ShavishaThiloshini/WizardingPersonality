@@ -1,6 +1,6 @@
 import React from 'react';
 
-function QuizSelection({ onSelectHouseQuiz }) {
+function QuizSelection({ onSelectHouseQuiz, onSelectCharacterQuiz }) {
   return (
     <div className="page-container center-content animate-fade-in" style={{ padding: '2rem 1rem' }}>
       <h1 className="text-title" style={{ textAlign: 'center', marginBottom: '2rem' }}>Choose Your Path</h1>
@@ -23,17 +23,17 @@ function QuizSelection({ onSelectHouseQuiz }) {
         </div>
 
         {/* CARD 02: Character Quiz */}
-        <div className="parchment-card center-content stack" style={{ flex: '1 1 300px', position: 'relative', opacity: 0.7, filter: 'grayscale(50%)' }}>
+        <div className="parchment-card center-content stack" style={{ flex: '1 1 300px', position: 'relative', transition: 'transform var(--transition-normal)' }}>
           <div className="decorative-border top"></div>
-          <h2 className="text-heading" style={{ textAlign: 'center', marginBottom: '0.5rem', color: 'var(--color-grey)' }}>Which Wizarding Character Are You?</h2>
-          <p className="text-body text-muted" style={{ textAlign: 'center', flexGrow: 1 }}>
+          <h2 className="text-heading" style={{ textAlign: 'center', marginBottom: '0.5rem' }}>Which Wizarding Character Are You?</h2>
+          <p className="text-body" style={{ textAlign: 'center', flexGrow: 1 }}>
             Find the wizarding character whose personality is most like yours.
           </p>
-          <p className="text-subtitle" style={{ color: 'var(--color-grey)', fontStyle: 'italic', marginBottom: '1rem' }}>
-            Coming Soon
+          <p className="text-subtitle" style={{ color: 'var(--color-gold)', fontStyle: 'italic', marginBottom: '1rem' }}>
+            10 Questions
           </p>
-          <button className="btn-secondary" disabled style={{ width: '100%', marginTop: 'auto', cursor: 'not-allowed' }}>
-            Unavailable
+          <button className="btn-primary" onClick={onSelectCharacterQuiz} style={{ width: '100%', marginTop: 'auto' }}>
+            Enter the Quiz
           </button>
           <div className="decorative-border bottom"></div>
         </div>

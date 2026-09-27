@@ -30,6 +30,11 @@ function App() {
     setCurrentScreen("quiz-intro");
   };
 
+  const handleSelectCharacterQuiz = () => {
+    setSelectedQuiz("character");
+    setCurrentScreen("quiz-intro");
+  };
+
   const handleBeginQuiz = () => {
     setCurrentQuestion(0);
     setAnswers([]);
@@ -78,11 +83,14 @@ function App() {
       )}
       
       {currentScreen === "quiz-selection" && (
-        <QuizSelection onSelectHouseQuiz={handleSelectHouseQuiz} />
+        <QuizSelection
+          onSelectHouseQuiz={handleSelectHouseQuiz}
+          onSelectCharacterQuiz={handleSelectCharacterQuiz}
+        />
       )}
 
       {currentScreen === "quiz-intro" && (
-        <QuizIntro onBeginQuiz={handleBeginQuiz} />
+        <QuizIntro quizType={selectedQuiz} onBeginQuiz={handleBeginQuiz} />
       )}
 
       {currentScreen === "quiz" && (
