@@ -29,7 +29,7 @@
   --color-card-bg: var(--color-parchment);
   
   /* Typography */
-  --font-family-display: 'Cinzel', 'Playfair Display', serif; /* Fallbacks for magical feeling */
+  --font-family-display: 'Harry Potter', 'Cinzel', 'Playfair Display', serif;
   --font-family-body: 'Inter', 'Roboto', sans-serif;
   
   --font-size-title: 3rem;
