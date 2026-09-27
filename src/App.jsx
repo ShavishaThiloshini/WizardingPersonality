@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import LoadingScreen from './components/LoadingScreen';
 import WelcomeScreen from './components/WelcomeScreen';
 import QuizSelection from './components/QuizSelection';
 import QuizIntro from './components/QuizIntro';
 import QuestionCard from './components/QuestionCard';
+import BackgroundMusic from './components/BackgroundMusic';
 import { houseQuestions } from './data/houseQuestions';
 
 function App() {
@@ -11,12 +12,16 @@ function App() {
   const [selectedQuiz, setSelectedQuiz] = useState(null);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState([]);
+  const musicRef = useRef(null);
 
   const handleLoadingComplete = () => {
     setCurrentScreen("welcome");
   };
 
   const handleStartJourney = () => {
+    if (musicRef.current) {
+      musicRef.current.startMusic();
+    }
     setCurrentScreen("quiz-selection");
   };
 
@@ -62,6 +67,8 @@ function App() {
 
   return (
     <div className="app-container magical-background">
+      <BackgroundMusic ref={musicRef} />
+      
       {currentScreen === "loading" && (
         <LoadingScreen onComplete={handleLoadingComplete} />
       )}
