@@ -1,40 +1,53 @@
 import React, { useEffect, useState } from 'react';
 import MagicalParticles from './MagicalParticles';
+import '../styles/loading.css';
 
 function LoadingScreen({ onComplete }) {
   const [isFadingOut, setIsFadingOut] = useState(false);
 
   useEffect(() => {
-    // Total duration ~2.5 seconds before transition
+    // 5.2 seconds total duration before calling onComplete
     const timer = setTimeout(() => {
       setIsFadingOut(true);
-      setTimeout(onComplete, 500); // 500ms for fade out transition
-    }, 2500);
+      setTimeout(() => {
+        onComplete();
+      }, 500); // 500ms fade out transition
+    }, 5200);
 
     return () => clearTimeout(timer);
   }, [onComplete]);
 
   return (
-    <div className={`page-container center-content ${isFadingOut ? 'animate-fade-out' : 'animate-fade-in'}`} style={{ position: 'relative', zIndex: 1, backgroundColor: 'var(--color-background)', height: '100vh', width: '100vw', padding: 0 }}>
+    <div className={`loading-sequence-container ${isFadingOut ? 'fade-out-screen' : ''}`}>
       <MagicalParticles />
-      <div className="stack center-content" style={{ zIndex: 2 }}>
-        
-        <div className="logo-placeholder" style={{ marginBottom: '2rem' }}>
-          <h1 className="text-title" style={{ 
-            textShadow: '0 0 15px rgba(195, 154, 28, 0.5)',
-            margin: 0,
-            lineHeight: 1.2
-          }}>
-            Wizarding<br/>Personality
-          </h1>
+      
+      <div className="enchanted-book-container" aria-hidden="true">
+        <div className="book-glow"></div>
+        <div className="book-wrapper">
+          <div className="book-spine"></div>
+          <div className="book-pages"></div>
+          <div className="book-cover left">
+            <div className="book-emblem"></div>
+          </div>
+          <div className="book-cover right">
+            <div className="book-emblem"></div>
+          </div>
         </div>
-        
-        <div className="loading-indicator">
-          <div className="magical-spinner"></div>
-        </div>
-        
-        <p className="text-subtitle animate-float" style={{ color: 'var(--color-light-gold)', marginTop: '1.5rem', letterSpacing: '2px' }}>
-          Loading magic...
+      </div>
+
+      <div className="house-symbols" aria-hidden="true">
+        <span className="symbol symbol-1">🦁</span>
+        <span className="symbol symbol-2">🦡</span>
+        <span className="symbol symbol-3">🦅</span>
+        <span className="symbol symbol-4">🐍</span>
+      </div>
+
+      <div className="final-text-container">
+        <h1 className="text-title" style={{ margin: 0, textShadow: '0 0 15px rgba(195, 154, 28, 0.8)', letterSpacing: '2px' }}>
+          WIZARDING PERSONALITY
+        </h1>
+        <p className="text-subtitle" style={{ color: 'var(--color-light-gold)', marginTop: '0.5rem', fontStyle: 'italic', letterSpacing: '1px' }}>
+          Discover what lies within.
         </p>
       </div>
     </div>
