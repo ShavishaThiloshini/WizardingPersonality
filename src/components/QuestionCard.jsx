@@ -17,7 +17,7 @@ function QuestionCard({
 
   return (
     <div className="page-container center-content animate-fade-in" style={{ padding: '1rem' }}>
-      <div className="parchment-card stack" style={{ maxWidth: '800px', width: '100%', padding: '2rem' }}>
+      <div className="parchment-card stack" style={{ maxWidth: '650px', width: '100%', padding: '2rem' }}>
         
         <ProgressBar current={questionIndex + 1} total={totalQuestions} />
         
