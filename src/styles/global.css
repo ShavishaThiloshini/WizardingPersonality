@@ -162,34 +162,6 @@ button:disabled {
   filter: grayscale(100%);
 }
 
-/* Floating Music Control Button */
-.music-control-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 44px;
-  height: 44px;
-  min-height: 44px;
-  border-radius: 50%;
-  background-color: var(--color-burgundy);
-  border: 2px solid var(--color-gold);
-  color: var(--color-gold);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 1000;
-  box-shadow: var(--shadow-subtle);
-  font-size: 1.2rem;
-  padding: 0;
-}
-
-.music-control-btn:hover {
-  box-shadow: var(--shadow-glow);
-  background-color: var(--color-btn-primary-hover);
-  transform: scale(1.05);
-}
-
 /* Image Reset */
 img {
   max-width: 100%;

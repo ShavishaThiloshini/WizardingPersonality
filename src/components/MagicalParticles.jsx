@@ -4,47 +4,45 @@ const MagicalParticles = () => {
   const [particles, setParticles] = useState([]);
 
   useEffect(() => {
-    // Generate 25 particles
-    const particleCount = 25;
-    const newParticles = Array.from({ length: particleCount }).map((_, i) => ({
+    const count = 15;
+    const generated = Array.from({ length: count }).map((_, i) => ({
       id: i,
       left: `${Math.random() * 100}%`,
       top: `${Math.random() * 100}%`,
-      animationDuration: `${Math.random() * 4 + 3}s`,
-      animationDelay: `${Math.random() * 3}s`,
-      size: `${Math.random() * 4 + 2}px`,
-      opacity: Math.random() * 0.5 + 0.2
+      size: `${Math.random() * 3 + 1.5}px`,
+      opacity: Math.random() * 0.35 + 0.1,
+      duration: `${Math.random() * 5 + 4}s`,
+      delay: `${Math.random() * 4}s`,
     }));
-    setParticles(newParticles);
+    setParticles(generated);
   }, []);
 
   return (
-    <div className="magical-particles-container" aria-hidden="true" style={{
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
-      pointerEvents: 'none',
-      overflow: 'hidden',
-      zIndex: 0
-    }}>
+    <div
+      aria-hidden="true"
+      style={{
+        position: 'absolute',
+        inset: 0,
+        pointerEvents: 'none',
+        overflow: 'hidden',
+        zIndex: 0,
+      }}
+    >
       {particles.map(p => (
-        <div
+        <span
           key={p.id}
-          className="particle"
           style={{
             position: 'absolute',
             left: p.left,
             top: p.top,
             width: p.size,
             height: p.size,
-            backgroundColor: 'var(--color-light-gold)',
             borderRadius: '50%',
+            background: 'var(--color-light-gold)',
             opacity: p.opacity,
-            animation: `particleFloat ${p.animationDuration} ease-in-out infinite alternate`,
-            animationDelay: p.animationDelay,
-            boxShadow: '0 0 5px var(--color-light-gold)'
+            boxShadow: '0 0 4px var(--color-light-gold)',
+            animation: `particleFloat ${p.duration} ease-in-out infinite alternate`,
+            animationDelay: p.delay,
           }}
         />
       ))}

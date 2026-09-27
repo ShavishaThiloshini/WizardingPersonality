@@ -1,201 +1,289 @@
-/* loading.css - Enchanted Book Sequence */
+/* loading.css - Clean Minimal Magical Loading Screen */
+
+/* ─── Container ─────────────────────────────────────── */
 .loading-sequence-container {
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100vw;
   height: 100vh;
-  background: radial-gradient(circle at center, #2a0b0b 0%, var(--color-background) 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 1.5rem;
+  background: radial-gradient(ellipse at center, #1f0c0c 0%, var(--color-background) 65%);
   overflow: hidden;
   z-index: 100;
+  animation: fadeIn 0.8s ease-out forwards;
 }
 
-/* The Enchanted Book */
-.enchanted-book-container {
-  position: relative;
-  width: 140px;
-  height: 190px;
-  perspective: 1200px;
-  opacity: 0;
-  animation: bookAppear 1s ease-in-out 0.8s forwards, bookFloat 4s ease-in-out 1.8s infinite;
-  z-index: 10;
-}
-
-.book-wrapper {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  transform-style: preserve-3d;
-  transform: rotateX(10deg);
-}
-
-.book-cover {
+/* Subtle vignette overlay */
+.loading-sequence-container::after {
+  content: '';
   position: absolute;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(135deg, var(--color-burgundy), #3a1111);
-  border: 2px solid var(--color-gold);
-  border-radius: 2px 8px 8px 2px;
-  box-shadow: inset 0 0 15px rgba(0,0,0,0.8), var(--shadow-card);
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.6) 100%);
+  pointer-events: none;
+}
+
+/* ─── Screen fade-out ────────────────────────────────── */
+.fade-out-screen {
+  animation: screenFadeOut 0.6s ease-out forwards;
+}
+
+@keyframes screenFadeOut {
+  to { opacity: 0; }
+}
+
+/* ─── Enchanted Book ─────────────────────────────────── */
+.enchanted-book-wrapper {
+  position: relative;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 0.5rem;
+  opacity: 0;
+  animation: bookFadeIn 1s ease-out 0.4s forwards;
 }
 
-.book-cover.right {
-  left: 50%;
-  transform-origin: left center;
-  animation: openBookRight 1s ease-in-out 2.5s forwards;
+.book-glow-halo {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(195, 154, 28, 0.18) 0%, transparent 70%);
+  animation: glowPulse 3s ease-in-out 1.2s infinite;
+  pointer-events: none;
 }
 
-.book-cover.left {
-  right: 50%;
-  transform-origin: right center;
-  border-radius: 8px 2px 2px 8px;
-  animation: openBookLeft 1s ease-in-out 2.5s forwards;
+.enchanted-book {
+  position: relative;
+  width: 100px;
+  height: 136px;
+  animation: bookFloat 4s ease-in-out 1.4s infinite;
 }
 
+/* Book body */
+.book-body {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, #3d1010 0%, #1e0808 50%, #2a1010 100%);
+  border: 2px solid var(--color-gold);
+  border-radius: 3px 6px 6px 3px;
+  box-shadow:
+    inset 0 0 12px rgba(0,0,0,0.8),
+    0 4px 20px rgba(0,0,0,0.7),
+    0 0 0 1px rgba(195, 154, 28, 0.1);
+}
+
+/* Spine */
 .book-spine {
   position: absolute;
+  left: 0;
+  top: 0;
   width: 12px;
   height: 100%;
-  background: #1a0505;
-  left: calc(50% - 6px);
-  z-index: 2;
-  border-left: 1px solid var(--color-gold);
+  background: linear-gradient(to right, #0d0404, #1a0808);
   border-right: 1px solid var(--color-gold);
+  border-radius: 3px 0 0 3px;
 }
 
-.book-pages {
+/* Gold border inset decoration */
+.book-border-inset {
   position: absolute;
-  width: 90%;
-  height: 94%;
-  top: 3%;
-  left: 5%;
-  background: var(--color-parchment);
+  inset: 7px 7px 7px 16px;
+  border: 1px solid rgba(195, 154, 28, 0.4);
   border-radius: 2px;
-  box-shadow: inset 0 0 20px rgba(195, 154, 28, 0.6);
-  opacity: 0;
-  animation: showPages 0.5s ease-in 2.6s forwards;
-  z-index: -1;
 }
 
-.book-emblem {
-  width: 30px;
-  height: 30px;
-  border: 2px solid var(--color-gold);
-  border-radius: 50%;
-  background: transparent;
-  box-shadow: 0 0 8px var(--color-gold);
-}
-
-.book-glow {
+/* Center emblem */
+.book-center-emblem {
   position: absolute;
-  width: 200%;
-  height: 200%;
+  top: 50%;
+  left: calc(50% + 4px);
+  transform: translate(-50%, -50%);
+  width: 22px;
+  height: 22px;
+  border: 1.5px solid var(--color-gold);
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(195, 154, 28, 0.5) 0%, transparent 60%);
-  top: -50%;
-  left: -50%;
-  opacity: 0;
-  mix-blend-mode: screen;
-  transform: scale(0.2);
-  animation: bookGlowPulse 0.7s ease-in-out 1.8s forwards, bookLightExpand 1.5s ease-in 4.0s forwards;
-  pointer-events: none;
-  z-index: 5;
+  box-shadow: 0 0 8px rgba(195, 154, 28, 0.5);
 }
 
-/* Magical Symbols */
-.house-symbols {
+.book-center-emblem::before,
+.book-center-emblem::after {
+  content: '';
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 250px;
-  height: 250px;
-  pointer-events: none;
-  z-index: 20;
+  background: var(--color-gold);
+  opacity: 0.7;
 }
 
-.symbol {
-  position: absolute;
-  font-size: 2rem;
-  opacity: 0;
-  filter: drop-shadow(0 0 10px var(--color-gold));
-  animation: symbolAppear 0.6s ease-in-out forwards;
+.book-center-emblem::before {
+  width: 1.5px;
+  height: 12px;
 }
 
-.symbol-1 { top: 0%; left: 50%; transform: translateX(-50%); animation-delay: 3.4s; }
-.symbol-2 { top: 50%; right: 0%; transform: translateY(-50%); animation-delay: 3.5s; }
-.symbol-3 { bottom: 0%; left: 50%; transform: translateX(-50%); animation-delay: 3.6s; }
-.symbol-4 { top: 50%; left: 0%; transform: translateY(-50%); animation-delay: 3.7s; }
+.book-center-emblem::after {
+  width: 12px;
+  height: 1.5px;
+}
 
-/* Final Text */
-.final-text-container {
+/* Book warm inner glow — appears after a moment */
+.book-inner-glow {
   position: absolute;
-  bottom: 25%;
+  inset: 0;
+  border-radius: 3px 6px 6px 3px;
+  background: radial-gradient(ellipse at 60% 50%, rgba(195,154,28,0.12) 0%, transparent 70%);
+  animation: innerGlowPulse 3s ease-in-out 1.5s infinite;
+}
+
+/* ─── Text block ─────────────────────────────────────── */
+.loading-text-block {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
   text-align: center;
   opacity: 0;
-  animation: finalTextAppear 1s ease-out 4.6s forwards;
-  z-index: 30;
+  animation: textFadeIn 1s ease-out 1.4s forwards;
 }
 
-/* Screen transition */
-.fade-out-screen {
-  animation: fadeOutScreen 0.5s ease-out forwards;
+.loading-title {
+  font-family: var(--font-family-display);
+  font-size: 1.75rem;
+  color: var(--color-gold);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin: 0;
+  text-shadow: 0 0 20px rgba(195, 154, 28, 0.5), 0 0 40px rgba(195, 154, 28, 0.2);
+  line-height: 1.2;
 }
 
-/* Keyframes */
-@keyframes bookAppear {
-  0% { opacity: 0; transform: translateY(30px) scale(0.9); }
-  100% { opacity: 1; transform: translateY(0) scale(1); }
+.loading-subtitle {
+  font-family: var(--font-family-body);
+  font-size: 0.85rem;
+  color: var(--color-parchment);
+  opacity: 0.55;
+  margin: 0;
+  letter-spacing: 1.5px;
+  font-style: italic;
 }
+
+/* ─── Loading dots indicator ─────────────────────────── */
+.loading-dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  opacity: 0;
+  animation: textFadeIn 0.8s ease-out 2s forwards;
+  z-index: 2;
+}
+
+.loading-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  opacity: 0.3;
+}
+
+.loading-dot:nth-child(1) { animation: dotPulse 1.5s ease-in-out 2.2s infinite; }
+.loading-dot:nth-child(2) { animation: dotPulse 1.5s ease-in-out 2.5s infinite; }
+.loading-dot:nth-child(3) { animation: dotPulse 1.5s ease-in-out 2.8s infinite; }
+
+/* ─── Keyframes ──────────────────────────────────────── */
+@keyframes bookFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 @keyframes bookFloat {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-@keyframes openBookRight {
-  0% { transform: rotateY(0deg); }
-  100% { transform: rotateY(150deg); }
-}
-@keyframes openBookLeft {
-  0% { transform: rotateY(0deg); }
-  100% { transform: rotateY(-150deg); }
-}
-@keyframes showPages {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
-@keyframes bookGlowPulse {
-  0% { opacity: 0; transform: scale(0.5); }
-  100% { opacity: 1; transform: scale(1.2); }
-}
-@keyframes bookLightExpand {
-  0% { opacity: 1; transform: scale(1.2); }
-  100% { opacity: 0; transform: scale(6); filter: brightness(2); }
-}
-@keyframes symbolAppear {
-  0% { opacity: 0; transform: scale(0.5); }
-  50% { opacity: 1; transform: scale(1.2); filter: drop-shadow(0 0 20px var(--color-light-gold)); }
-  100% { opacity: 0; transform: scale(1.5); filter: blur(5px); }
-}
-@keyframes finalTextAppear {
-  0% { opacity: 0; transform: translateY(15px); filter: blur(5px); }
-  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
-}
-@keyframes fadeOutScreen {
-  0% { opacity: 1; }
-  100% { opacity: 0; }
+  50%       { transform: translateY(-7px); }
 }
 
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50%       { opacity: 1; transform: scale(1.08); }
+}
+
+@keyframes innerGlowPulse {
+  0%, 100% { opacity: 0.6; }
+  50%       { opacity: 1; }
+}
+
+@keyframes textFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes dotPulse {
+  0%, 100% { opacity: 0.25; transform: scale(0.85); }
+  50%       { opacity: 0.9; transform: scale(1.15); }
+}
+
+/* ─── Responsive ─────────────────────────────────────── */
+@media (max-width: 480px) {
+  .enchanted-book { width: 80px; height: 110px; }
+  .book-glow-halo { width: 160px; height: 160px; }
+  .loading-title { font-size: 1.35rem; letter-spacing: 2px; }
+  .loading-subtitle { font-size: 0.78rem; }
+}
+
+/* ─── Reduced motion ─────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-  .enchanted-book-container { animation: bookAppear 1s ease-in-out 0.8s forwards; }
-  .book-cover.right, .book-cover.left { animation: none; transform: rotateY(0deg); opacity: 0; }
-  .book-pages { animation: showPages 1s ease-in 2.5s forwards; z-index: 3;}
-  .book-glow { animation: showPages 1s ease-in 4.0s forwards; }
-  .symbol { animation: showPages 1s ease-in 3.4s forwards; }
+  .enchanted-book { animation: bookFadeIn 0.6s ease-out 0.4s forwards; }
+  .book-glow-halo { animation: none; opacity: 0.4; }
+  .book-inner-glow { animation: none; }
+  .loading-dot { animation: none; opacity: 0.5; }
+}
+
+/* ─── Music Control Button ───────────────────────────── */
+.music-control-btn {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  width: 34px;
+  height: 34px;
+  min-height: unset;
+  padding: 0;
+  border-radius: 50%;
+  background-color: rgba(31, 8, 8, 0.85);
+  border: 1.5px solid rgba(195, 154, 28, 0.6);
+  color: var(--color-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  font-size: 0.85rem;
+  line-height: 1;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
+}
+
+.music-control-btn:hover {
+  border-color: var(--color-light-gold);
+  box-shadow: 0 0 10px rgba(195, 154, 28, 0.35);
+  transform: scale(1.04);
+}
+
+.music-control-btn:focus-visible {
+  outline: 2px solid var(--color-light-gold);
+  outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+  .music-control-btn {
+    bottom: 14px;
+    right: 14px;
+    width: 34px;
+    height: 34px;
+  }
 }
