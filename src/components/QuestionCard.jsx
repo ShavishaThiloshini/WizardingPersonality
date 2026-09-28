@@ -25,7 +25,7 @@ function QuestionCard({
           {question.question}
         </h2>
         
-        <div className="answers-container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '1rem', marginBottom: '2rem' }}>
+        <div className="answers-grid">
           {question.answers.map((ans) => (
             <AnswerOption 
               key={ans.id}
