@@ -1,274 +1,264 @@
 const characterQuestions = [
   {
     id: "C01",
-    question:
-      "You are given an important goal, but achieving it will be difficult. What do you do?",
+    question: "You walk into a room and realize everyone has suddenly gone silent. What do you assume?",
     answers: [
       {
         id: "a",
-        text: "Face it head-on — the difficulty makes it worth pursuing.",
-        scores: { harry: 5, ron: 2, hermione: 2, draco: 3, neville: 3, luna: 1, ginny: 5 },
+        text: "Someone was probably talking about me.",
+        scores: { harry: 0, ron: 0, hermione: 0, draco: 10, neville: 0, luna: 0, ginny: 0 }
       },
       {
         id: "b",
-        text: "Research thoroughly and create a detailed plan before you begin.",
-        scores: { harry: 2, ron: 1, hermione: 5, draco: 3, neville: 2, luna: 2, ginny: 2 },
+        text: "Something weird is definitely happening.",
+        scores: { harry: 0, ron: 0, hermione: 0, draco: 0, neville: 0, luna: 10, ginny: 0 }
       },
       {
         id: "c",
-        text: "Figure out which approach gives you the strongest advantage.",
-        scores: { harry: 2, ron: 1, hermione: 3, draco: 5, neville: 1, luna: 1, ginny: 3 },
+        text: "I'll just ask what's going on.",
+        scores: { harry: 0, ron: 0, hermione: 0, draco: 0, neville: 0, luna: 0, ginny: 10 }
       },
       {
         id: "d",
-        text: "Take it step by step — even slow progress is still progress.",
-        scores: { harry: 2, ron: 3, hermione: 2, draco: 1, neville: 5, luna: 3, ginny: 2 },
-      },
-    ],
+        text: "I'll pretend I didn't notice and observe everyone.",
+        scores: { harry: 0, ron: 0, hermione: 0, draco: 0, neville: 10, luna: 0, ginny: 0 }
+      }
+    ]
   },
   {
     id: "C02",
-    question:
-      "One of your closest friends is going through a difficult time. How do you respond?",
+    question: "Your friend wants to do something completely ridiculous.",
     answers: [
       {
         id: "a",
-        text: "Stay by their side and make sure they know you are not going anywhere.",
-        scores: { harry: 4, ron: 5, hermione: 3, draco: 1, neville: 4, luna: 3, ginny: 3 },
+        text: "\"This is a terrible idea... let's do it.\"",
+        scores: { harry: 0, ron: 10, hermione: 0, draco: 0, neville: 0, luna: 0, ginny: 0 }
       },
       {
         id: "b",
-        text: "Find practical information or resources that could help them.",
-        scores: { harry: 2, ron: 2, hermione: 5, draco: 2, neville: 2, luna: 2, ginny: 2 },
+        text: "\"Absolutely not. Here's why.\"",
+        scores: { harry: 0, ron: 0, hermione: 10, draco: 0, neville: 0, luna: 0, ginny: 0 }
       },
       {
         id: "c",
-        text: "Offer an unusual perspective that might help them see it differently.",
-        scores: { harry: 1, ron: 2, hermione: 2, draco: 1, neville: 2, luna: 5, ginny: 2 },
+        text: "\"Wait, that actually sounds interesting.\"",
+        scores: { harry: 0, ron: 0, hermione: 0, draco: 0, neville: 0, luna: 10, ginny: 0 }
       },
       {
         id: "d",
-        text: "Encourage them to stand up for themselves and not let the situation win.",
-        scores: { harry: 4, ron: 2, hermione: 2, draco: 2, neville: 3, luna: 1, ginny: 5 },
-      },
-    ],
+        text: "\"Fine, but I'll handle the risky part.\"",
+        scores: { harry: 10, ron: 0, hermione: 0, draco: 0, neville: 0, luna: 0, ginny: 0 }
+      }
+    ]
   },
   {
     id: "C03",
-    question:
-      "You suddenly have a completely free day. How would you most likely spend it?",
+    question: "You unexpectedly become really good at something.",
     answers: [
       {
         id: "a",
-        text: "Read, study, or learn something you have been curious about.",
-        scores: { harry: 1, ron: 1, hermione: 5, draco: 2, neville: 3, luna: 4, ginny: 1 },
+        text: "I act like it's no big deal.",
+        scores: { harry: 0, ron: 0, hermione: 0, draco: 0, neville: 10, luna: 0, ginny: 0 }
       },
       {
         id: "b",
-        text: "Spend time with the people who matter most to you.",
-        scores: { harry: 3, ron: 5, hermione: 2, draco: 1, neville: 4, luna: 2, ginny: 3 },
+        text: "I immediately want to get even better.",
+        scores: { harry: 0, ron: 0, hermione: 0, draco: 10, neville: 0, luna: 0, ginny: 0 }
       },
       {
         id: "c",
-        text: "Explore somewhere new or do something completely spontaneous.",
-        scores: { harry: 4, ron: 3, hermione: 1, draco: 2, neville: 2, luna: 4, ginny: 5 },
+        text: "I'm surprised that I managed it.",
+        scores: { harry: 0, ron: 10, hermione: 0, draco: 0, neville: 0, luna: 0, ginny: 0 }
       },
       {
         id: "d",
-        text: "Work on something that brings you closer to a personal goal.",
-        scores: { harry: 3, ron: 1, hermione: 4, draco: 5, neville: 2, luna: 1, ginny: 3 },
-      },
-    ],
+        text: "I'm quietly proud of myself.",
+        scores: { harry: 0, ron: 0, hermione: 10, draco: 0, neville: 0, luna: 0, ginny: 0 }
+      }
+    ]
   },
   {
     id: "C04",
-    question:
-      "You encounter a problem that has no obvious solution. What is your first instinct?",
+    question: "Someone you dislike suddenly needs your help.",
     answers: [
       {
         id: "a",
-        text: "Try something bold and see what happens — instinct can guide you.",
-        scores: { harry: 5, ron: 3, hermione: 1, draco: 2, neville: 2, luna: 2, ginny: 4 },
+        text: "I'll help. I'm not leaving someone in trouble.",
+        scores: { harry: 10, ron: 0, hermione: 0, draco: 0, neville: 0, luna: 0, ginny: 0 }
       },
       {
         id: "b",
-        text: "Gather as much information as possible before making a move.",
-        scores: { harry: 2, ron: 1, hermione: 5, draco: 3, neville: 2, luna: 2, ginny: 2 },
+        text: "I'll help, but I'm definitely going to complain about it.",
+        scores: { harry: 0, ron: 10, hermione: 0, draco: 0, neville: 0, luna: 0, ginny: 0 }
       },
       {
         id: "c",
-        text: "Consider a completely unconventional approach that others might overlook.",
-        scores: { harry: 2, ron: 2, hermione: 3, draco: 2, neville: 1, luna: 5, ginny: 2 },
+        text: "I'll help if there's a sensible way to do it.",
+        scores: { harry: 0, ron: 0, hermione: 10, draco: 0, neville: 0, luna: 0, ginny: 0 }
       },
       {
         id: "d",
-        text: "Ask for help from someone you trust and work through it together.",
-        scores: { harry: 3, ron: 5, hermione: 2, draco: 1, neville: 4, luna: 2, ginny: 2 },
-      },
-    ],
+        text: "I'll help, but I'm not becoming their best friend.",
+        scores: { harry: 0, ron: 0, hermione: 0, draco: 0, neville: 0, luna: 0, ginny: 10 }
+      }
+    ]
   },
   {
     id: "C05",
-    question:
-      "Someone strongly disagrees with you during an important conversation. How do you react?",
+    question: "You're sitting alone at Hogwarts when someone you've never spoken to sits beside you.",
     answers: [
       {
         id: "a",
-        text: "Defend your position calmly but firmly — you believe in it.",
-        scores: { harry: 4, ron: 2, hermione: 4, draco: 3, neville: 2, luna: 1, ginny: 5 },
+        text: "Start a conversation.",
+        scores: { harry: 0, ron: 0, hermione: 0, draco: 0, neville: 0, luna: 0, ginny: 10 }
       },
       {
         id: "b",
-        text: "Listen carefully and try to find common ground.",
-        scores: { harry: 3, ron: 4, hermione: 3, draco: 1, neville: 4, luna: 3, ginny: 2 },
+        text: "Wonder why they chose to sit there.",
+        scores: { harry: 0, ron: 0, hermione: 0, draco: 10, neville: 0, luna: 0, ginny: 0 }
       },
       {
         id: "c",
-        text: "Back up your argument with facts and evidence.",
-        scores: { harry: 2, ron: 1, hermione: 5, draco: 3, neville: 1, luna: 2, ginny: 2 },
+        text: "Continue what I'm doing and see if they speak first.",
+        scores: { harry: 0, ron: 0, hermione: 0, draco: 0, neville: 10, luna: 0, ginny: 0 }
       },
       {
         id: "d",
-        text: "Stay confident in your view but remain unbothered by what they think.",
-        scores: { harry: 3, ron: 2, hermione: 2, draco: 5, neville: 1, luna: 4, ginny: 3 },
-      },
-    ],
+        text: "Say something completely random just to see their reaction.",
+        scores: { harry: 0, ron: 0, hermione: 0, draco: 0, neville: 0, luna: 10, ginny: 0 }
+      }
+    ]
   },
   {
     id: "C06",
-    question:
-      "You make a mistake that affects something important. What do you do next?",
+    question: "You discover that your best friend has been keeping a major secret from you.",
     answers: [
       {
         id: "a",
-        text: "Own it immediately, apologise, and do everything you can to make it right.",
-        scores: { harry: 5, ron: 4, hermione: 3, draco: 1, neville: 5, luna: 2, ginny: 3 },
+        text: "I'm hurt, but I want to know why.",
+        scores: { harry: 10, ron: 0, hermione: 0, draco: 0, neville: 0, luna: 0, ginny: 0 }
       },
       {
         id: "b",
-        text: "Analyse exactly what went wrong so you never repeat it.",
-        scores: { harry: 2, ron: 1, hermione: 5, draco: 3, neville: 2, luna: 2, ginny: 2 },
+        text: "I'm immediately suspicious.",
+        scores: { harry: 0, ron: 0, hermione: 0, draco: 10, neville: 0, luna: 0, ginny: 0 }
       },
       {
         id: "c",
-        text: "Minimise the impact and find a way to redirect attention.",
-        scores: { harry: 1, ron: 2, hermione: 1, draco: 5, neville: 1, luna: 1, ginny: 2 },
+        text: "I'll give them time to explain.",
+        scores: { harry: 0, ron: 0, hermione: 0, draco: 0, neville: 10, luna: 0, ginny: 0 }
       },
       {
         id: "d",
-        text: "Take a quiet moment to reflect, then move forward with more care.",
-        scores: { harry: 2, ron: 3, hermione: 3, draco: 2, neville: 4, luna: 5, ginny: 3 },
-      },
-    ],
+        text: "I'll probably confront them directly.",
+        scores: { harry: 0, ron: 0, hermione: 0, draco: 0, neville: 0, luna: 0, ginny: 10 }
+      }
+    ]
   },
   {
     id: "C07",
-    question:
-      "You are placed in a group where nobody wants to take responsibility. What do you do?",
+    question: "You're offered a chance to join a competition, but there's a good chance you'll embarrass yourself.",
     answers: [
       {
         id: "a",
-        text: "Step up and take the lead — someone has to.",
-        scores: { harry: 5, ron: 2, hermione: 3, draco: 4, neville: 2, luna: 1, ginny: 5 },
+        text: "I'm doing it anyway.",
+        scores: { harry: 0, ron: 0, hermione: 0, draco: 0, neville: 0, luna: 0, ginny: 10 }
       },
       {
         id: "b",
-        text: "Organise the group and make sure everyone is included and feels heard.",
-        scores: { harry: 3, ron: 4, hermione: 3, draco: 1, neville: 5, luna: 2, ginny: 3 },
+        text: "I'll prepare until I'm confident.",
+        scores: { harry: 0, ron: 0, hermione: 10, draco: 0, neville: 0, luna: 0, ginny: 0 }
       },
       {
         id: "c",
-        text: "Create a structured plan and present it clearly to get things moving.",
-        scores: { harry: 2, ron: 2, hermione: 5, draco: 3, neville: 2, luna: 1, ginny: 2 },
+        text: "I'll probably need someone to convince me.",
+        scores: { harry: 0, ron: 10, hermione: 0, draco: 0, neville: 0, luna: 0, ginny: 0 }
       },
       {
         id: "d",
-        text: "Do your part well and trust that the group will eventually find its way.",
-        scores: { harry: 1, ron: 3, hermione: 2, draco: 2, neville: 3, luna: 5, ginny: 2 },
-      },
-    ],
+        text: "I'll do it just to prove something to myself.",
+        scores: { harry: 0, ron: 0, hermione: 0, draco: 10, neville: 0, luna: 0, ginny: 0 }
+      }
+    ]
   },
   {
     id: "C08",
-    question:
-      "You discover something unusual that nobody else seems interested in understanding. What do you do?",
+    question: "Which kind of person would you naturally become friends with?",
     answers: [
       {
         id: "a",
-        text: "Investigate it thoroughly — you need to understand it completely.",
-        scores: { harry: 3, ron: 1, hermione: 5, draco: 2, neville: 3, luna: 4, ginny: 2 },
+        text: "Someone funny who makes boring days better.",
+        scores: { harry: 0, ron: 10, hermione: 0, draco: 0, neville: 0, luna: 0, ginny: 0 }
       },
       {
         id: "b",
-        text: "Embrace it with genuine curiosity and enjoy exploring it on your own terms.",
-        scores: { harry: 2, ron: 1, hermione: 3, draco: 1, neville: 2, luna: 5, ginny: 2 },
+        text: "Someone curious who sees the world differently.",
+        scores: { harry: 0, ron: 0, hermione: 0, draco: 0, neville: 0, luna: 10, ginny: 0 }
       },
       {
         id: "c",
-        text: "Share it with someone close to you and explore it together.",
-        scores: { harry: 3, ron: 5, hermione: 2, draco: 1, neville: 4, luna: 3, ginny: 3 },
+        text: "Someone determined who pushes me to improve.",
+        scores: { harry: 10, ron: 0, hermione: 0, draco: 0, neville: 0, luna: 0, ginny: 0 }
       },
       {
         id: "d",
-        text: "Assess whether it could give you a meaningful advantage.",
-        scores: { harry: 2, ron: 1, hermione: 3, draco: 5, neville: 1, luna: 1, ginny: 3 },
-      },
-    ],
+        text: "Someone quiet who needs a friend.",
+        scores: { harry: 0, ron: 0, hermione: 0, draco: 0, neville: 10, luna: 0, ginny: 0 }
+      }
+    ]
   },
   {
     id: "C09",
-    question:
-      "You are offered an opportunity that could lead to something great, but there is also a significant risk. What do you do?",
+    question: "Someone tells you, 'You're not capable of doing that.' What's your immediate thought?",
     answers: [
       {
         id: "a",
-        text: "Take it without hesitation — the potential is worth the risk.",
-        scores: { harry: 5, ron: 2, hermione: 1, draco: 3, neville: 2, luna: 3, ginny: 5 },
+        text: "\"We'll see.\"",
+        scores: { harry: 10, ron: 0, hermione: 0, draco: 0, neville: 0, luna: 0, ginny: 0 }
       },
       {
         id: "b",
-        text: "Research every angle and calculate the risk carefully before deciding.",
-        scores: { harry: 2, ron: 2, hermione: 5, draco: 4, neville: 2, luna: 2, ginny: 2 },
+        text: "\"Maybe they're right...\"",
+        scores: { harry: 0, ron: 10, hermione: 0, draco: 0, neville: 0, luna: 0, ginny: 0 }
       },
       {
         id: "c",
-        text: "Talk it through with someone you trust before making a decision.",
-        scores: { harry: 3, ron: 5, hermione: 3, draco: 1, neville: 4, luna: 2, ginny: 3 },
+        text: "\"Let me prove them wrong.\"",
+        scores: { harry: 0, ron: 0, hermione: 0, draco: 10, neville: 0, luna: 0, ginny: 0 }
       },
       {
         id: "d",
-        text: "Follow your instincts — if it feels right, that is enough for you.",
-        scores: { harry: 3, ron: 2, hermione: 1, draco: 2, neville: 2, luna: 5, ginny: 4 },
-      },
-    ],
+        text: "\"Why do they think that?\"",
+        scores: { harry: 0, ron: 0, hermione: 10, draco: 0, neville: 0, luna: 0, ginny: 0 }
+      }
+    ]
   },
   {
     id: "C10",
-    question:
-      "If people remembered one quality about you, which would you most want it to be?",
+    question: "Years after leaving Hogwarts, what would you most want your old friends to say about you?",
     answers: [
       {
         id: "a",
-        text: "That you were always there for the people who needed you.",
-        scores: { harry: 4, ron: 5, hermione: 2, draco: 1, neville: 5, luna: 2, ginny: 3 },
+        text: "\"They always had our backs.\"",
+        scores: { harry: 10, ron: 0, hermione: 0, draco: 0, neville: 0, luna: 0, ginny: 0 }
       },
       {
         id: "b",
-        text: "That you were exceptionally knowledgeable and always prepared.",
-        scores: { harry: 1, ron: 1, hermione: 5, draco: 3, neville: 2, luna: 3, ginny: 1 },
+        text: "\"They made everything more fun.\"",
+        scores: { harry: 0, ron: 0, hermione: 0, draco: 0, neville: 0, luna: 0, ginny: 10 }
       },
       {
         id: "c",
-        text: "That you were brave enough to act when it truly mattered.",
-        scores: { harry: 5, ron: 3, hermione: 2, draco: 2, neville: 4, luna: 1, ginny: 5 },
+        text: "\"They never stopped learning.\"",
+        scores: { harry: 0, ron: 0, hermione: 10, draco: 0, neville: 0, luna: 0, ginny: 0 }
       },
       {
         id: "d",
-        text: "That you saw the world differently and were never afraid to be yourself.",
-        scores: { harry: 2, ron: 2, hermione: 2, draco: 3, neville: 3, luna: 5, ginny: 3 },
-      },
-    ],
-  },
+        text: "\"They became someone completely their own.\"",
+        scores: { harry: 0, ron: 0, hermione: 0, draco: 0, neville: 0, luna: 10, ginny: 0 }
+      }
+    ]
+  }
 ];
 
 export default characterQuestions;
