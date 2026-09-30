@@ -10,6 +10,7 @@ function ResultScreen({
   data,
   onPlayAgain,
   onChooseAnother,
+  onStartPotion,
 }) {
   const winnerData = data.find(d => d.id === winner);
   const winnerPct = percentages[winner] ?? 0;
@@ -101,8 +102,13 @@ function ResultScreen({
 
         <hr className="result-divider" style={{ marginTop: '1.5rem' }} />
 
-        {/* Action buttons */}
+  // ─── Action buttons ──────────────────────────────────
         <div className="result-buttons">
+          {onStartPotion && (
+            <button className="btn-primary potion-journey-btn" onClick={onStartPotion} style={{ width: '100%', marginBottom: '0.5rem', background: 'var(--color-gold)', color: 'var(--color-dark-brown)', fontSize: '1.1rem' }}>
+              ✨ Continue Your Wizarding Journey (Potion Game)
+            </button>
+          )}
           <button className="btn-primary" onClick={onPlayAgain}>
             Play Again
           </button>

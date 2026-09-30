@@ -8,6 +8,7 @@ import QuestionCard from './components/QuestionCard';
 import BackgroundMusic from './components/BackgroundMusic';
 import MagicalParticles from './components/MagicalParticles';
 import ResultScreen from './components/ResultScreen';
+import PotionGame from './components/PotionGame';
 import { houseQuestions } from './data/houseQuestions';
 import characterQuestions from './data/characterQuestions';
 import { houses } from './data/houses';
@@ -128,6 +129,19 @@ function App() {
     setCurrentScreen('quiz-selection');
   };
 
+  // ─── Potion Game ──────────────────────────────────
+  const handleStartPotion = () => setCurrentScreen('potion-game');
+
+  const handlePotionBack = () => setCurrentScreen('quiz-result');
+
+  const handlePotionHome = () => {
+    setCurrentQuestion(0);
+    setAnswers([]);
+    setQuizResult(null);
+    setSelectedQuiz(null);
+    setCurrentScreen('welcome');
+  };
+
   // ─── Current question ─────────────────────────────
   const currentQuestionData = questions[currentQuestion];
   const currentAnswer = answers.find(
@@ -183,6 +197,14 @@ function App() {
           data={resultData}
           onPlayAgain={handlePlayAgain}
           onChooseAnother={handleChooseAnother}
+          onStartPotion={handleStartPotion}
+        />
+      )}
+
+      {currentScreen === 'potion-game' && (
+        <PotionGame
+          onBack={handlePotionBack}
+          onHome={handlePotionHome}
         />
       )}
     </div>
